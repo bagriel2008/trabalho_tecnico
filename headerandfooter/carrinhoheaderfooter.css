@@ -1,0 +1,91 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    
+}
+
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    
+}
+
+header {
+    position: relative;
+    width: 100%;
+    height: 160px;
+    background-color: #003366;
+    display: flex;
+    align-items: center;
+}
+
+.barraDePesquisa {
+    display: none;
+}
+
+.barraDePesquisa.show {
+    display: block;
+}
+
+.barraDePesquisaContainer {
+    position: absolute;
+    right: 15rem;
+    display: flex;
+    align-items: center;
+}
+
+.barraDePesquisa {
+    width: 50vw;
+    height: 4vh;
+    background-color: #D9D9D9;
+    border-radius: 30px;
+    margin-right: 1rem;
+    animation: expandSearchBar 0.5s forwards; 
+}
+
+@keyframes expandSearchBar {
+    from {
+        width: 0;
+    }
+    to {
+        width: 50vw;
+    }
+}
+
+.lupa {
+    height: 2.8rem;
+}
+
+.icons {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+}
+
+.carrinho {
+    margin-left: 2rem;
+    height: 3rem;
+}
+
+.perfil {
+    margin-left: 2rem;
+    height: 3rem;
+}
+
+.logo{
+    height: 8rem;
+    margin-left: 2rem;
+    border-radius: 2rem;
+}
+
+footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 14vh; /* Altura do footer */
+    background: linear-gradient(to bottom, #999999, #333333);
+    color: white;
+}

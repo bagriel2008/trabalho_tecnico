@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="confirmacao.css">
+    <title>Confirmação de Compra</title>
+</head>
+
+<body>
+    <header class="header">
+        <a href="../pagina inicial/index.html"><img src="../headerandfooter/assets/_51bbc2c7-6a46-43e1-8868-a644f0a230b8.png" alt="Logo"
+                class="logo"></a> <!-- exemplo de logo -->
+        <div class="barraDePesquisaContainer">
+            <input type="text" class="barraDePesquisa" placeholder="Pesquisar...">
+            <img src="../headerandfooter/assets/Search.png" alt="Lupa" class="lupa">
+        </div>
+        <div class="icons">
+            <a href="../main carrinho/index.html"><img src="../headerandfooter/assets/Shopping Cart.png" alt="Carrinho"
+                    class="carrinho"></a>
+            <img src="../headerandfooter/assets/Male User.png" alt="Perfil" class="perfil">
+        </div>
+    </header>
+
+    <main>
+        <section class="titulo">
+            <p>Confirmação de compra</p>
+        </section>
+        <div class="linha"></div>
+
+        <section class="compras">
+            <div class="itens">
+                <div class="primeiroItem">
+                    <img src="" alt="">
+                    <div>
+                        <p class="descricao"></p>
+                        <p class="preco">Preço: R$ <span class="item-preco">25.99</span></p>
+                        <p class="qntd">Quantidade:</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="informacoes">
+            <div class="container">
+                <p>Desconto: R$0 </p>
+                <p>Total: <span id="total">R$0</span></p>
+            </div>
+            <div class="confirmarCompra">
+                <button id="confirmar-compra">
+                    <p></p>
+                </button>
+            </div>
+        </section>
+    </main>
+
+    <footer></footer>
+</body>
+<script src="../main carrinho/carrinho.js"></script>
+<script src="confirmacao.js"></script>
+<script src="../headerandfooter/headerfooter.js"></script>
+
+</html>
