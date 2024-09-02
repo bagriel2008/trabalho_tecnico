@@ -12,7 +12,7 @@
 <body>
 
     <header class="header">
-        <a href="../pagina inicial/index.html"><img src="../headerandfooter/assets/_51bbc2c7-6a46-43e1-8868-a644f0a230b8.png" alt="Logo" class="logo"></a> <!-- exemplo de logo -->
+        <a href="../pagina inicial/index.html"><img src="../headerandfooter/assets/_51bbc2c7-6a46-43e1-8868-a644f0a230b8.png" alt="Logo" class="logo"></a>
         <div class="barraDePesquisaContainer">
             <input type="text" class="barraDePesquisa" placeholder="Pesquisar...">
             <img src="../headerandfooter/assets/Search.png" alt="Lupa" class="lupa">
@@ -20,11 +20,29 @@
         <div class="icons">
             <a href="../main carrinho/index.html"><img src="../headerandfooter/assets/Shopping Cart.png" alt="Carrinho"
                     class="carrinho"></a>
-            <img src="../headerandfooter/assets/Male User.png" alt="Perfil" class="perfil">
+            <img src="../headerandfooter/assets/Male User.png" alt="Perfil" class="perfil" id="profileIcon">
         </div>
     </header>
-
+    
+    
     <main>
+        <div id="loginPopup" class="popup">
+            <div class="popup-content">
+                <span class="close-btn" id="closePopup">&times;</span>
+                <h2>Login</h2>
+                <form id="loginForm">
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" name="name" required>
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required>
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" name="password" required>
+                    <button type="submit">Submit</button>
+                </form>
+            </div>
+        </div>
+        
+
         <section>
 
             <div class="container1">
@@ -80,12 +98,15 @@
                 <p>Ver mais</p>
             </a>
         </section>
+        
     </main>
 
     <footer></footer>
 </body>
-<script src="script.js"></script>
+<script src="../script js/script.js"></script>
 <script src="../headerandfooter/headerfooter.js"></script>
 <script src="../main carrinho/carrinho.js"></script>
+<script src="script.js"></script>
+<script src="../src/server.js"></script>
 
 </html>

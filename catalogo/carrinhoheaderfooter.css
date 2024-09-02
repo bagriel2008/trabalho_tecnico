@@ -12,14 +12,21 @@ body {
 
 .wrapper {
     flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Estilos do container principal */
+.container {
+    margin: 2rem;
+    flex: 1;
 }
 
 .center {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: repeat(4, 1fr);
-    grid-column-gap: 0.2rem;
-    grid-row-gap: 0.5rem;
+    grid-template-rows: repeat(auto-fill, minmax(27vh, 1fr));
+    grid-gap: 0.5rem;
     justify-items: center;
 }
 
@@ -35,9 +42,6 @@ body {
     text-align: center;
 }
 
-.container {
-    margin: 2rem;
-}
 
 .titulo {
     font-size: 3rem;
@@ -52,6 +56,7 @@ body {
     border-radius: 1rem;
 }
 
+
 .items {
     width: 10vw;
     height: 19vh;
@@ -60,3 +65,23 @@ body {
     border-radius: 1rem;
 }
 
+.adicionar {
+    position: absolute;
+    bottom: 170px; /* Ajuste a distância do botão para o rodapé conforme necessário */
+    right: 10px; /* Ajuste a distância do botão para a borda direita conforme necessário */
+    background-color: #fff;
+    width: 50px; /* Define um tamanho fixo para a largura */
+    height: 50px; /* Define um tamanho fixo para a altura */
+    border-radius: 50%;
+    box-shadow: 1px 4px 4px 4px rgba(0,0,0,0.2);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.adicionar img {
+    width: 30px; /* Ajuste o tamanho da imagem conforme necessário */
+    height: 30px; /* Ajuste o tamanho da imagem conforme necessário */
+}

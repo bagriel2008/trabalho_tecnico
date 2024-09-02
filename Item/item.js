@@ -1,12 +1,22 @@
-let imagens = [
-    'assets_comida/MicrosoftTeams-image (24).png',
-    'assets/MicrosoftTeams-image (12).png'
-];
-let imagemIndex = 0;
+async function carregarProduto() {
+    try {
+        const response = await fetch('http://localhost:3333/produto/listar');
+        const data = await response.json();
 
-function trocarImagem(direcao) {
-    imagemIndex = (imagemIndex + direcao + imagens.length) % imagens.length;
-    document.getElementById("produto-imagem").src = imagens[imagemIndex];
+        if (data.success) {
+            const products = data.data[0];
+
+            document.getElementById('produtoNome').innerText = products.name;
+            document.getElementById('descricao').querySelector('p').innerText = products.description;
+            document.getElementById('produtoPreco').innerText = `R$ ${products.price}`;
+
+           
+        } else {
+            console.error('Erro ao carregar o produto:', data.message);
+        }
+    } catch (error) {
+        console.error('Erro ao buscar os dados:', error);
+    }
 }
 
-
+document.addEventListener('DOMContentLoaded', carregarProduto);
