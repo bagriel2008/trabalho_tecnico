@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                 productDiv.className = 'retangulo';
 
                 productDiv.innerHTML = `
-                    <img src="${products.imagem_link}" class="itens" alt="${products.name}">
+                    <a href="../item/index.html"><img src="${products.imagem_link}" class="itens" alt="${products.name}"></a>
                     <p>${products.name}</p>
                     <p>R$ ${products.price}</p>
                 `;
@@ -25,5 +25,16 @@ document.addEventListener('DOMContentLoaded', async () => {
     } catch (error) {
         console.error('Erro ao buscar produtos:', error);
         productList.innerHTML = '<p>Erro ao carregar produtos.</p>';
+    }
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+    const adicionarIcon = document.getElementById('adicionar');
+
+    // Verifica o status de login no localStorage
+    if (localStorage.getItem('isLoggedIn') === 'true') {
+        adicionarIcon.style.display = 'block'; // Mostra o ícone
+    } else {
+        adicionarIcon.style.display = 'none'; // Garante que o ícone esteja escondido
     }
 });

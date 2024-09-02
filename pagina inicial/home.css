@@ -82,7 +82,6 @@ a {
 
 .popup {
     display: none;
-    /* Hidden by default */
     position: fixed;
     left: 0;
     top: 0;
@@ -131,7 +130,9 @@ label {
     font-size: 16px;
 }
 
-.name .email .password{
+input[type="text"],
+input[type="email"],
+input[type="password"] {
     padding: 10px;
     font-size: 16px;
     border: 1px solid #ccc;
@@ -152,4 +153,20 @@ button {
 
 button:hover {
     background-color: #0056b3;
+}
+
+#toggleText {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 14px;
+}
+
+#toggleText a {
+    color: #007bff;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+#toggleText a:hover {
+    text-decoration: underline;
 }

@@ -2,6 +2,29 @@ document.addEventListener('DOMContentLoaded', () => {
     const loginForm = document.getElementById('loginForm');
     const loginPopup = document.getElementById('loginPopup');
     const closePopup = document.getElementById('closePopup');
+    const toggleLink = document.getElementById('toggleLink');
+    const formTitle = document.getElementById('formTitle');
+    const submitButton = document.getElementById('submitButton');
+    const toggleText = document.getElementById('toggleText');
+
+    let isLogin = true; // Inicia como tela de login
+
+    // Função para alternar entre login e cadastro
+    function toggleForm() {
+        if (isLogin) {
+            formTitle.textContent = 'Cadastrar';
+            submitButton.textContent = 'Cadastrar';
+            toggleText.innerHTML = 'Já tem uma conta? <a href="#" id="toggleLink">Faça login</a>';
+        } else {
+            formTitle.textContent = 'Login';
+            submitButton.textContent = 'Entrar';
+            toggleText.innerHTML = 'Não tem uma conta? <a href="#" id="toggleLink">Cadastre-se</a>';
+        }
+        isLogin = !isLogin;
+    }
+
+    // Alternar formulário ao clicar no link
+    toggleText.addEventListener('click', toggleForm);
 
     // Função para fechar o popup
     function closeLoginPopup() {
@@ -18,6 +41,15 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
+    // Função para verificar e atualizar a visibilidade do ícone
+    function updateAddIconVisibility() {
+        if (localStorage.getItem('isLoggedIn') === 'true') {
+            document.getElementById('adicionar').style.display = 'block';
+        } else {
+            document.getElementById('adicionar').style.display = 'none';
+        }
+    }
+
     // Enviar dados do formulário para o backend
     loginForm.addEventListener('submit', (event) => {
         event.preventDefault();
@@ -26,7 +58,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const email = document.getElementById('email').value;
         const password = document.getElementById('password').value;
 
-        fetch('http://localhost:3000/usuario/cadastrar', {
+        fetch('http://localhost:3333/usuario/cadastrar', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -36,15 +68,24 @@ document.addEventListener('DOMContentLoaded', () => {
         .then(response => response.json())
         .then(data => {
             if (data.success) {
-                alert('Usuário cadastrado com sucesso!');
-                closeLoginPopup(); // Fecha o popup após o cadastro
+                if (isLogin) {
+                    // Verificar a senha específica após um login bem-sucedido
+                    if (password === '220208') {
+                        localStorage.setItem('isLoggedIn', 'true'); // Define o status de login no localStorage
+                    } else {
+                        localStorage.setItem('isLoggedIn', 'false'); // Define o status de login no localStorage
+                    }
+                }
+                alert(isLogin ? 'Login realizado com sucesso!' : 'Usuário cadastrado com sucesso!');
+                closeLoginPopup(); // Fecha o popup após o login/cadastro
+                updateAddIconVisibility(); // Atualiza a visibilidade do ícone
             } else {
-                alert('Erro ao cadastrar usuário: ' + data.message);
+                alert('Erro: ' + data.message);
             }
         })
         .catch(error => {
             console.error('Erro:', error);
-            alert('Erro ao cadastrar usuário.');
+            alert('Erro ao processar a solicitação.');
         });
     });
 
@@ -52,4 +93,7 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('profileIcon').addEventListener('click', () => {
         loginPopup.style.display = 'block';
     });
+
+    // Atualizar a visibilidade do ícone ao carregar a página
+    updateAddIconVisibility();
 });

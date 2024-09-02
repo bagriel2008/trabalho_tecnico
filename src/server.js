@@ -29,31 +29,54 @@ const connection = require('./db_config');
 
 // Rotas
 app.post('/usuario/cadastrar', (request, response) => {
-    let params = [
-        request.body.name,
-        request.body.email,
-        request.body.password,
-     
-    ];
-    let query = "INSERT INTO users(name, email, password) VALUES (?, ?, ?);";
-    connection.query(query, params, (err, results) => {
-        if (results) {
-            response.status(201).json({
-                success: true,
-                message: "Sucesso",
-                data: results
-            });
-        } else {
-            response
-            .status(400)
-            .json({
+    const { name, email, password } = request.body;
+
+    // Primeiro, verificar se o e-mail já existe
+    const checkUserQuery = "SELECT * FROM users WHERE email = ?";
+    connection.query(checkUserQuery, [email], (err, results) => {
+        if (err) {
+            return response.status(500).json({
                 success: false,
-                message: "Sem sucesso",
+                message: "Erro no servidor",
                 data: err
             });
         }
-    });
 
+        if (results.length > 0) {
+            // Se o e-mail já existe, verificar a senha
+            const user = results[0];
+            if (user.password === password) {
+                return response.status(200).json({
+                    success: true,
+                    message: "Login realizado com sucesso",
+                    data: user
+                });
+            } else {
+                return response.status(401).json({
+                    success: false,
+                    message: "Senha incorreta",
+                });
+            }
+        } else {
+            // Se o e-mail não existe, realizar o cadastro
+            const insertUserQuery = "INSERT INTO users(name, email, password) VALUES (?, ?, ?)";
+            connection.query(insertUserQuery, [name, email, password], (err, results) => {
+                if (err) {
+                    return response.status(500).json({
+                        success: false,
+                        message: "Erro ao cadastrar usuário",
+                        data: err
+                    });
+                }
+
+                return response.status(201).json({
+                    success: true,
+                    message: "Usuário cadastrado com sucesso",
+                    data: results
+                });
+            });
+        }
+    });
 });
 
 app.get('/usuario/listar', (request, response) => {
