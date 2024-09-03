@@ -263,7 +263,6 @@ app.post('/produto/favoritar/:id', (request, response) => {
 
 
 app.get('/produtos/favoritos', (request, response) => {
-    // Consulta para buscar os produtos favoritados
     const query = `
         SELECT p.id, p.name, p.description, p.price, p.imagem_link
         FROM favorites f
