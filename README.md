@@ -1,18 +1,18 @@
-### Instalação
+## Instalação
 
-## Clone o repositório:
+### Clone o repositório:
     git clone <URL_DO_REPOSITORIO>
     cd nome-do-projeto
 
-## Instale as dependências:
+### Instale as dependências:
     npm install
 
-## Inicie o servidor:
+### Inicie o servidor:
     npm start
 
     O servidor estara rodando na porta 3333
 
-## Configuração do Banco de Dados:
+### Configuração do Banco de Dados:
 
     O banco de dados crud_api já está configurado com as tabelas users e products. Aqui está a configuração do banco:
     Banco de Dados: crud_api
@@ -42,9 +42,9 @@
     Um usuário administrador (adm) com email cleber@gmail.com e senha 220208.
     Produtos de exemplo com detalhes como nome, descrição, preço e imagem.
 
-### Utilização da API
+## Utilização da API
 
-## Cadastro/Login de Usuário
+### Cadastro/Login de Usuário
 
     Endpoint: POST /usuario/cadastrar
     Descrição: Cadastra um novo usuário ou realiza o login se o e-mail já estiver cadastrado.
@@ -60,14 +60,14 @@
     401: Senha incorreta.
     500: Erro no servidor.
 
-## Listagem de Usuários
+### Listagem de Usuários
     Endpoint: GET /usuario/listar
     Descrição: Retorna todos os usuários cadastrados.
     Response:
     201: Sucesso.
     400: Sem sucesso.
 
-## Edição de Usuário
+### Edição de Usuário
     Endpoint: PUT /usuario/editar/:id
     Descrição: Atualiza os dados de um usuário existente.
     Request Body:
@@ -81,7 +81,7 @@
     404: Usuário não encontrado.
     500: Erro no servidor.
 
-## Deleção de Usuário
+### Deleção de Usuário
     Endpoint: DELETE /usuario/deletar/:id
     Descrição: Deleta um usuário pelo ID.
     Response:
@@ -89,7 +89,7 @@
     404: Usuário não encontrado.
     500: Erro no servidor.
 
-## Cadastro de Produto
+### Cadastro de Produto
     Endpoint: POST /produto/cadastrar
     Descrição: Cadastra um novo produto.
     Request Body:
@@ -103,14 +103,14 @@
     201: Produto cadastrado com sucesso.
     500: Erro no servidor.
 
-## Listagem de Produtos
+### Listagem de Produtos
     Endpoint: GET /produto/listar
     Descrição: Retorna todos os produtos cadastrados.
     Response:
     201: Sucesso.
     400: Sem sucesso.
 
-## Deleção de Produto
+### Deleção de Produto
     Endpoint: DELETE /produto/deletar/:id
     Descrição: Deleta um produto pelo ID.
     Response:
@@ -118,7 +118,7 @@
     404: Produto não encontrado.
     500: Erro no servidor.
 
-## Favoritar Produto
+### Favoritar Produto
     Endpoint: POST /produto/favoritar/:id
     Descrição: Adicionar um item aos favoritos pelo ID.
     Response:
@@ -127,7 +127,7 @@
     500: Erro ao favoritar produto
     200: Produto favoritado com sucesso
 
-## Lista de favoritos
+### Lista de favoritos
     Endpoint: GET /produtos/favoritos
     Descrição: mostrar os items da lista dos favoritos.
     Response:
@@ -135,5 +135,5 @@
     404: Nenhum produto favoritado encontrado
     201: Produtos favoritados listados com sucesso
 
-### Testes
+## Testes
     Os endpoints podem ser testados utilizando ferramentas como Postman, Insomnia ou o ThunderClient. Certifique-se de que o servidor esteja em execução e utilize as URLs conforme especificado acima.
